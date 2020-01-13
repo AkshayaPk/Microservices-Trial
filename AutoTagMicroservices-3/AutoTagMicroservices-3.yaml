@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  FunctionAlias:
+    Type: String
+  ENVIRONMENT:
+    Type: String
+
+Description: Deploys Lambda
+Resources:
+  AutoTagMicroservices3:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${ENVIRONMENT}AutoTagMicroservices-3'
+      Handler: AutoTagEC2RDSS3ECS.lambda_handler
+      Runtime: python2.7
+      CodeUri: ./
+      AutoPublishAlias:
+        Ref:
+          FunctionAlias

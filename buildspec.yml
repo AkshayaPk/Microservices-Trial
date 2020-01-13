@@ -1,0 +1,23 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+        python: 3.8
+  build:
+    commands:
+      - pip install boto3
+      - export BUCKET=cfn-lambda-autotag-codebucket
+      - aws cloudformation package --template-file ./AutoTagMicroservices-1/AutoTagMicroservices-1.yaml --s3-bucket $BUCKET --output-template-file OutputAutoTagMicroservices-1.yml
+      - aws cloudformation package --template-file ./AutoTagMicroservices-2/AutoTagMicroservices-2.yaml --s3-bucket $BUCKET --output-template-file OutputAutoTagMicroservices-2.yml
+      - aws cloudformation package --template-file ./AutoTagMicroservices-3/AutoTagMicroservices-3.yaml --s3-bucket $BUCKET --output-template-file OutputAutoTagMicroservices-3.yml
+
+artifacts:
+  type: zip
+  files:
+    - AutoTagMicroservices-1.yaml
+    - AutoTagMicroservices-2.yaml
+    - AutoTagMicroservices-3.yaml
+    - OutputAutoTagMicroservices-1.yml
+    - OutputAutoTagMicroservices-2.yml
+    - OutputAutoTagMicroservices-3.yml
+  
