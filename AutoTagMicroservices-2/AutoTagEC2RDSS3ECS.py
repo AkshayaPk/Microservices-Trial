@@ -15,6 +15,7 @@ def lambda_handler(event, context):
     #Initialized Arrays
     #Added more comments
     #HelloHowAreYou
+    #Greatttt
         ids = []
         rdsids = []
         s3ids = []
