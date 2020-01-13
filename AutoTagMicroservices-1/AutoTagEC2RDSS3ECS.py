@@ -17,6 +17,7 @@ def lambda_handler(event, context):
     #hello Hi Hello
     #Hwwwwww
     #Heyyyyyyyyssssasdasd
+    #asfda
         ids = []
         rdsids = []
         s3ids = []
